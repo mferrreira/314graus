@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="./index.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="node_modules/slick-carousel/slick/slick.css" />
+  <link rel="stylesheet" type="text/css" href="node_modules/slick-carousel/slick/slick-theme.css" />
+  <script type="text/javascript" src="./node_modules/slick-carousel/slick/slick.min.js"></script>
+
+  <title>314</title>
+</head>
+
+<body class="bg-slate-300">
+
+  <div class="flex flex-col h-screen">
+    <header>
+      <nav class="bg-gradient-to-b from-pink-500 to-pink-400 px-6 py-4 ">
+        <div class="flex justify-between items-center">
+
+          <div class="text-white font-bold text-xl">Logo</div>
+
+          <div class="flex text-white">
+            <a href="#">
+              <p class=" mx-4">Eventos</p>
+            </a>
+            <a href="#">
+              <p class=" mx-4">Experiências</p>
+            </a>
+          </div>
+      </nav>
+
+    </header>
+
+    <main class="max-w-5xl mx-auto overflow-x-hidden sm:max-w-full sm:px-4 pt-1" style="max-width: 100%;">
+      <div class="carousel" style="height: 70dvh;">
+        <div class="carousel-item">
+          <div class="bg-zinc-700 sm:w-full flex justify-center items-center" style="height: 70dvh; border-radius: 15px;">
+            
+            <div class=" text-gray-300">
+
+              <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl shadow-xl">Não é somente sobre festas</h1>
+              <p class="text-sm sm:text-2x1 md:text-base lg:text-lg xl:text-xl pt-2 ml-4 shadow-lg w-72">é sobre criar momentos <strong>inesquecíveis</strong></p>
+            
+            </div>
+          
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="bg-zinc-700 sm:w-full flex justify-center items-center " style="height: 70dvh; border-radius: 15px;">
+            
+            <div id="formWrapper" class="text-gray-300">
+
+              <h1 class="text-3xl font-bold">Fique por dentro das novidades: </h1>
+
+              <form action="localhost:4000/sign" method="post" >
+                <input type="text" placeholder="email"> <br/>
+                <input type="text" placeholder="celular"> <br/>
+                <input type="checkbox"> <p>Quero receber e-mails ou mensagens dos próximos eventos da 314</p>
+              </form>
+
+            </div>
+          
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('.carousel').slick({
+          arrows: false,
+          dots: true,
+          infinite: true,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        });
+      });
+    </script>
+
+  </div>
+
+  <div id="root">
+  </div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>
