@@ -9,24 +9,24 @@
   <link rel="stylesheet" type="text/css" href="node_modules/slick-carousel/slick/slick.css" />
   <link rel="stylesheet" type="text/css" href="node_modules/slick-carousel/slick/slick-theme.css" />
   <script type="text/javascript" src="./node_modules/slick-carousel/slick/slick.min.js"></script>
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   <title>314</title>
 </head>
 
-<body class="bg-slate-300">
+<body class="bg-zinc-200">
 
-  <div class="flex flex-col h-screen">
-    <header>
-      <nav class="bg-gradient-to-b from-pink-500 to-pink-400 px-6 py-4 ">
+  <div class="flex flex-col h-fill">
+    <header class="shadow-md">
+      <nav class="bg-gradient-to-b from-pink-500 to-pink-400 px-6 py-4">
         <div class="flex justify-between items-center">
 
           <div class="text-white font-bold text-xl">Logo</div>
 
           <div class="flex text-white">
-            <a href="#">
+            <a href="#eventos">
               <p class=" mx-4">Eventos</p>
             </a>
-            <a href="#">
+            <a href="#galeria">
               <p class=" mx-4">Experiências</p>
             </a>
           </div>
@@ -34,42 +34,48 @@
 
     </header>
 
-    <main class="max-w-5xl mx-auto overflow-x-hidden sm:max-w-full sm:px-4 pt-1" style="max-width: 100%;">
+    <main class="max-w-5xl mx-auto overflow-x-hidden sm:max-w-full sm:px-4 pt-8" style="max-width: 100%;">
       <div class="carousel" style="height: 70dvh;">
         <div class="carousel-item">
-          <div class="bg-zinc-700 sm:w-full flex justify-center items-center" style="height: 70dvh; border-radius: 15px;">
-            
+          <div class="bg-zinc-700 sm:w-full flex justify-center items-center"
+            style="height: 70dvh; border-radius: 15px;">
+
             <div class=" text-gray-300">
 
               <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl shadow-xl">Não é somente sobre festas</h1>
-              <p class="text-sm sm:text-2x1 md:text-base lg:text-lg xl:text-xl pt-2 ml-4 shadow-lg w-72">é sobre criar momentos <strong>inesquecíveis</strong></p>
-            
+              <p class="text-sm sm:text-2x1 md:text-base lg:text-lg xl:text-xl pt-2 ml-4 shadow-lg w-72">é sobre criar
+                momentos <strong>inesquecíveis</strong></p>
+
             </div>
-          
+
           </div>
         </div>
         <div class="carousel-item">
-          <div class="bg-zinc-700 sm:w-full flex justify-center items-center " style="height: 70dvh; border-radius: 15px;">
-            
-            <div id="formWrapper" class="text-gray-300">
+          <div class=" sm:w-full flex justify-center items-center" style="height: 70dvh; border-radius: 15px;">
+
+            <div id="formWrapper" class="bg-gray-100 text-black p-8 shadow-xl rounded-md">
 
               <h1 class="text-3xl font-bold">Fique por dentro das novidades: </h1>
 
-              <form action="localhost:4000/sign" method="post" >
-                <input type="text" placeholder="email"> <br/>
-                <input type="text" placeholder="celular"> <br/>
-                <input type="checkbox"> <p>Quero receber e-mails ou mensagens dos próximos eventos da 314</p>
+              <form action="localhost:4000/sign" method="post">
+                <input type="text" placeholder="email" class="rounded-lg border-gray-300 my-2 py-2 px-3 block w-full">
+                <input type="text" placeholder="telefone"
+                  class="rounded-lg border-gray-300 my-2 py-2 px-3 block w-full">
+                <button type="submit" class="bg-pink-500 text-white font-bold py-2 px-4 rounded-lg my-2">receber e-mails
+                  e mensagens dos próximos eventos da 314</button>
               </form>
 
             </div>
-          
+
+
           </div>
         </div>
       </div>
     </main>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <script type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
     <script type="text/javascript">
       $(document).ready(function () {
         $('.carousel').slick({
@@ -78,15 +84,53 @@
           infinite: true,
           slidesToShow: 1,
           slidesToScroll: 1,
+          autoplay: true,
+          autoplaySpeed: 5000
         });
       });
+      form = document.getElementById('formWrapper')
+      form.addEventListener('focusin', () => slick.slickPause())
+      form.addEventListener('focusout', () => slick.slickPlay())
     </script>
 
   </div>
 
-  <div id="root">
-  </div>
+  <div id="eventos"></div>
+  <div id="galeria"></div>
   <script type="module" src="/src/main.jsx"></script>
+
+  <footer class="bg-gradient-to-b from-pink-400 to-pink-500 h-100 pb-20 text-white">
+    <h1 class="text-center p-10 text-4xl text-white">Siga nossas redes sociais</h1>
+
+    <div class="grid grid-cols-3 gap-4 justify-items-center p-10">
+      <div>
+        <a href="#"><i class="fab fa-instagram text-white text-8xl"></i> </a>
+      </div>
+      <div>
+        <a href="#"><i class="fab fa-youtube text-white text-8xl"></i> </a>
+      </div>
+      <div>
+        <a href="#"><i class="fab fa-facebook text-white text-8xl"></i> </a>
+      </div>
+    </div>
+
+    <p class="text-center text-lg">314 Graus produtora, todos os direitos reservados</p>
+    <p class="text-center">desing by Márcio Ferreira</p>
+  </footer>
+
+
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+  </script>
 </body>
 
 </html>
