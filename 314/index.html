@@ -24,7 +24,7 @@
 
           <div class="flex text-white">
             <a href="#eventos">
-              <p class=" mx-4">Eventos</p>
+              <p class=" mx-4">Ingressos</p>
             </a>
             <a href="#galeria">
               <p class=" mx-4">Experiências</p>
@@ -57,10 +57,9 @@
 
               <h1 class="text-3xl font-bold">Fique por dentro das novidades: </h1>
 
-              <form action="localhost:4000/sign" method="post">
-                <input type="text" placeholder="email" class="rounded-lg border-gray-300 my-2 py-2 px-3 block w-full">
-                <input type="text" placeholder="telefone"
-                  class="rounded-lg border-gray-300 my-2 py-2 px-3 block w-full">
+              <form enctype="multipart/form-data" id="formToSend">
+                <input type="text" placeholder="email" name="email" class="rounded-lg border-gray-300 my-2 py-2 px-3 block w-full">
+                <input type="text" placeholder="telefone" name="telefone" class="rounded-lg border-gray-300 my-2 py-2 px-3 block w-full">
                 <button type="submit" class="bg-pink-500 text-white font-bold py-2 px-4 rounded-lg my-2">receber e-mails
                   e mensagens dos próximos eventos da 314</button>
               </form>
@@ -72,7 +71,31 @@
         </div>
       </div>
     </main>
+    <script>
+      function prepareAndSendForm(e) {
+        e.preventDefault()
+        const URL = 'http://localhost:4000/cadastrar'
+        const form = document.getElementById('formToSend')
+        const formData = new FormData(form)
+        fetch(URL, {
+          method: 'POST',
+          body: formData
+        })
+        .then(res => {
+          if (!res.ok){
+            throw new Error('Houve algum erro')
+          }
+          form.reset()
+        })
+        .catch(e => {
+          console.error('Houve algum erro')
+        })
 
+      }
+
+      const formToSend = document.getElementById('formToSend')
+      formToSend.addEventListener('submit', prepareAndSendForm)
+    </script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
