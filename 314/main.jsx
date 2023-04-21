@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Galeria from './Components/Galeria/Galeria'
-import Eventos from './Components/Eventos/Eventos'
+import Galeria from './src/Components/Galeria/Galeria'
+import Eventos from './src/Components/Eventos/Eventos'
 
 ReactDOM.createRoot(document.getElementById('eventos')).render(
   <Eventos />
