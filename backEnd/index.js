@@ -4,6 +4,7 @@ const bp = require('body-parser')
 const multer = require('multer')
 const upload = multer()
 const cors = require('cors')
+const db = require('./firebaseConfig.js')
 
 
 app.use(bp.urlencoded({ extended: true }))
@@ -22,14 +23,17 @@ app.post('/cadastrar', upload.none(), (req, res) => {
     res.send('oi')
 })
 
-app.get('/eventos', (req, res) => {
-    console.log('request recebida!')
+app.get('/eventos', async (req, res) => {
+    console.log('# request recebida, tentando buscar os eventos...\n')
 
-
-    const db = admin.database()
-    const ref = db.ref('eventos')
-
-    const eventos = [
+    try{
+        const eventos = await db.collection('eventos').get()
+        const data = eventos.docs.map(doc => doc.data())
+        console.log(data)
+        res.json(data)
+    } catch (e) { res.status(500).send('Ocorreu algum erro interno no servidor!') }
+    
+    /*const eventos = [
         {
             id: 1,
             name: "Item 1",
@@ -51,8 +55,7 @@ app.get('/eventos', (req, res) => {
             description: "Description of item 4",
         },
     ];
-
-    res.send(eventos)
+    */
     // puxar os eventos do banco de dados e enviar
 
 })
