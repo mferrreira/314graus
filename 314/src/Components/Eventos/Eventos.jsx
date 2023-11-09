@@ -43,7 +43,7 @@ export default function Eventos() {
         <div id="wrapper" className="text-black">
             <h1 className="text-center text-7xl">Compre agora</h1>
             <div className="relative pt-10" ref={ref}>
-                <div className="flex justify-center">
+                <div className="flex justify-center" onClick={() => {if(selectedItem !== null) {setSelectedItem(null)}}}>
                     {eventos.map((item, index) => (
                         <div key={item.id} className="w-52 h-52 rounded-full bg-gray-300 cursor-pointer mx-2 my-8" onClick={() => handleClick(index)}>
                             <div className="flex justify-center items-center h-full">
@@ -53,16 +53,18 @@ export default function Eventos() {
                     ))}
                 </div>
                 {selectedItem !== null && (
-                    <div className="flex justify-center content-center mt-10">
-                        <div className="w-[50vw] h-96 bg-white shadow-lg rounded-lg p-4 ">
+                    <div className="flex justify-center content-center items-center">
+                        <div className="mt-10 px-8 py-4 rounded-lg bg-zinc-300 shadow-xl" >
+                        <div className="w-[30vw] h-96 bg-white shadow-sm rounded-lg p-4 ">
                             <h2 className="font-bold text-lg text-center">{eventos[selectedItem].nome}</h2>
                             <p className="text-gray-600 font-semibold text-center mt-3">{eventos[selectedItem].data}</p>
                             <p className="text-gray-600 text-center mt-3">{eventos[selectedItem].descricao}</p>
                             <div className="flex justify-center items-center h-full">
                                 <div className="justify-center">
-                                    <button className="text-white font-bold bg-green-600 align-middle p-3">Comprar ingresso</button>
+                                    <a href={eventos[selectedItem].url_compra} target="_blank" className="text-white font-bold bg-green-600 align-middle p-3">Comprar ingresso</a>
                                 </div>
                             </div>
+                        </div>
                         </div>
                     </div>
                 )}

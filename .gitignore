@@ -1,2 +1,7 @@
-./backend/package-lock.json
-./backend/node_modules/*
+*.json
+backEnd/node_modules/
+backEnd/package-lock.json
+backEnd/produtora-314graus-firebase-adminsdk-g8ipu-5098730edd.json
+
+314/node_modules/
+314/package-lock.json

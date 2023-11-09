@@ -16,57 +16,44 @@ app.listen(4000, () => {
 })
 
 app.post('/cadastrar', upload.none(), (req, res) => {
-    console.log(req.body)
+    // cadastrar nomes, emails e numeros no banco de dados
+    try{
+        console.log(req.body)
+        res.status(200).send('deu bom')
+    } catch(e) {
+        res.json(e)
+    }
 
-    // Preparar e enviar o form para o banco de dados
 
-    res.send('oi')
 })
 
 app.get('/eventos', async (req, res) => {
-    console.log('# request recebida, tentando buscar os eventos...\n')
+    console.log('# request recebida, buscando eventos...\n')
 
-    try{
+    try {
         const eventos = await db.collection('eventos').get()
         const data = eventos.docs.map(doc => doc.data())
-        console.log(data)
+        console.log('# Eventos buscados com sucesso, Eviando...')
         res.json(data)
     } catch (e) { res.status(500).send('Ocorreu algum erro interno no servidor!') }
-    
-    /*const eventos = [
-        {
-            id: 1,
-            name: "Item 1",
-            description: "Description of item 1",
-        },
-        {
-            id: 2,
-            name: "Item 2",
-            description: "Description of item 2",
-        },
-        {
-            id: 3,
-            name: "Item 3",
-            description: "Description of item 3",
-        },
-        {
-            id: 4,
-            name: "Item 4",
-            description: "Description of item 4",
-        },
-    ];
-    */
-    // puxar os eventos do banco de dados e enviar
+
 
 })
 
 app.post('/eventos', (req, res) => {
-    /*
-        newEventRef.set({
+    newEventRef.set({
         name: req.body.name,
         description: req.body.description,
         date: req.body.date,
         image: req.body.image,
         url: req.body.url
-    }) */
-})
+    }, (error) => {
+        if (error) {
+            console.error(error);
+            res.status(500).send('Erro ao inserir evento no banco de dados.');
+        } else {
+            console.log('Evento inserido com sucesso!');
+            res.status(201).send('Evento inserido com sucesso!');
+        }
+    });
+});
